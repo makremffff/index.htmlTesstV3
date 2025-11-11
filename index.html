@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>صفحة بسيطة</title>
+</head>
+<body>
+  <h1>مرحبا من HTML!</h1>
+  <button onclick="fetchData()">جلب البيانات</button>
+  <p id="result"></p>
+
+  <script>
+    async function fetchData() {
+      const res = await fetch('/api');
+      const data = await res.json();
+      document.getElementById('result').innerText = data.message;
+    }
+  </script>
+</body>
+</html>
