@@ -1,6 +1,5 @@
 module.exports = (req, res) => {
   const { action, userID, amount, address } = req.query;
-
   if (!action) return res.status(400).json({ error: 'Missing action' });
 
   switch (action) {
@@ -14,7 +13,7 @@ module.exports = (req, res) => {
       return res.json({ success: true, reward: 500 });
 
     case 'watchAd':
-      return res.json({ success: true, remaining: 29 });
+      return res.json({ success: true, remaining: Math.max(0, (parseInt(req.query.counter) || 30) - 1) });
 
     case 'claimTask':
       return res.json({ success: true, reward: 10000 });
