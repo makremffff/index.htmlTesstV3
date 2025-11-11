@@ -1,4 +1,4 @@
-module.exports = (req, res) => {
+export default function handler(req, res) {
   const { action, userID, amount, address } = req.query;
   if (!action) return res.status(400).json({ error: 'Missing action' });
 
@@ -39,4 +39,4 @@ module.exports = (req, res) => {
     default:
       return res.status(400).json({ error: 'Invalid action' });
   }
-};
+}
